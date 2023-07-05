@@ -1,0 +1,266 @@
+LAB 11 (TEMPLATE FUNCTION PRACTICE CODE)
+
+#include<iostream>
+using namespace std;
+template<class t>
+class account{
+private: 
+int number;
+T balance;
+Public: 
+void setdata(int n, T b){
+number=n;
+balance=b;}
+void showdata(){
+cout<<"acc number"<<number<<endl;
+cout<<"balance"<<balance<<endl;
+}
+};
+int main(){
+account<double> acc; //creating object and declaring data type for using template.
+acc.setdata(8,233232);
+acc.showdata();
+return 0;}
+
+LAB 10. 
+Early Binding (Static Binding):
+Early binding refers to the resolution of a function call at compile time. 
+In this case, the function call is bound to a specific function implementation based on the static type of the object. 
+It is also known as static binding or compile-time polymorphism.
+Code: 
+#include <iostream>
+using namespace std;
+class Shape {
+public:
+    void draw() {
+        cout << "Drawing a Shape." <<endl;  }
+};
+class Circle : public Shape {
+public:
+    void draw() {
+        cout << "Drawing a Circle." <<endl;}
+};
+int main() {
+    Shape shape;
+    Circle circle;
+    Shape* ptr = &shape;
+    ptr->draw();  // Output: "Drawing a Shape."
+    ptr = &circle;
+    ptr->draw();  // Output: "Drawing a Shape." (early binding)
+    return 0;
+}
+
+Late Binding (Dynamic Binding):
+Late binding refers to the resolution of a function call at runtime. 
+In this case, the function call is bound to a specific function implementation based 
+on the actual type of the object being pointed to. 
+It is also known as dynamic binding or runtime polymorphism.
+CODE:
+
+#include <iostream>
+Using namespace std;
+class Shape {
+public:
+    virtual void draw() {
+        cout << "Drawing a Shape." << endl;  }
+};
+class Circle : public Shape {
+public:
+    void draw() {
+        cout << "Drawing a Circle." << endl;  }
+};
+int main() {
+    Shape shape;
+    Circle circle;
+    Shape* ptr = &shape;
+    ptr->draw();  // Output: "Drawing a Shape."
+    ptr = &circle;
+    ptr->draw();  // Output: "Drawing a Circle." (late binding)
+    return 0;
+}
+
+LAB 9 CONCEPT OF POLYMORPHISM.
+Theory: Polymorphism in C++ is the ability of objects of different classes to be treated as objects of a common superclass.
+Code:
+#include<iostream?
+using namespace std;
+class datetime{
+private:
+int day;
+int month;
+int year;
+int hours;
+int minutes;
+int seconds;
+public:
+void setvalue(int _day, int _month, int_year){
+day=_day;
+month=_month;
+year=_year;}
+void setvalue(int _day, int _month, int_year,int _hours){
+setvalue(_day,_month,_year);
+hours=_hours;}
+void setvalue(int _day, int _month, int_year,int _hours, int _minutes)
+{setvalue(_day,_month,_year,_hours);
+minutes=_minutes;}
+void setvalue(int _day, int _month, int_year, int_hours, int_minutes, int _seconds)
+{setvalue(_day,_month,_year,_hours,_minutes); 
+seconds=_seconds;}};
+int main(){
+datatime d;
+d.setvalue();
+d.setvalue();
+d.setvalue();
+d.setvalue();
+return 0;}
+
+LAB 8 MULTIPLE INHERITANCE
+Theory: Multiple inheritance in C++ is the ability of a class to inherit from multiple base classes.
+Code: 
+#include <iostream>
+Usding namespace std;
+class BaseA {
+public:
+    void displayA() {
+        cout << "This is BaseA." << endl;  }
+};
+class BaseB {
+public:
+    void displayB() {
+        cout << "This is BaseB." <<endl;  }
+};
+class Derived : public BaseA, public BaseB {
+public:
+    void displayDerived() {
+        cout << "This is Derived." <<endl;  }
+};
+int main() {
+    Derived obj;
+    obj.displayA();         // Output: "This is BaseA."
+    obj.displayB();         // Output: "This is BaseB."
+    obj.displayDerived();   // Output: "This is Derived."
+    return 0;}
+
+LAB 7 Concept of Inheritance.
+
+Theory: Inheritance in C++ is the mechanism by which a class can acquire properties 
+(data members and member functions) from another class, 
+known as the base class or parent clas
+
+Code:
+#include <iostream>
+Using namespace std;
+// Base class
+class Shape {
+protected:
+    int width;
+    int height;
+public:
+    void setDimensions(int w, int h) {
+        width = w;
+        height = h;  }
+};
+// Derived class
+class Rectangle : public Shape {
+public:
+    int getArea() {
+        return width * height;  }
+};
+int main() {
+    Rectangle rect;
+    rect.setDimensions(5, 3);
+    int area = rect.getArea();
+    cout << "Area of the rectangle: " <<area<<endl;
+    return 0;}
+
+LAB 6 Friend Function.
+
+Theory: A friend function in C++ is a function that is
+granted access to the private and protected members of a class, as if it were a member of that class.
+
+Code: 
+#include <iostream>
+Using namespace std;
+class MyClass {
+private:
+    int data;
+public:
+    MyClass(int value) : data(value) {}//parametrized constructor
+    // Declare the friend function
+    friend void displayData(const MyClass& obj);};
+// Define the friend function
+void displayData(const MyClass& obj) {
+    cout << "Data: " << obj.data <<endl;}
+int main() {
+    MyClass obj(12);
+    displayData(obj);  // Output: "Data: 12"
+    return 0;}
+
+LAB 4 CONSTRUCTOR AND DESTRUCTOR.
+
+Theory:
+Constructor: A constructor is a special member function of a class that is automatically called
+ when an object of that class is created, used to initialize the object's data members and perform any necessary setup.
+Destructor: A destructor is a special member function of a class that is automatically called 
+ when an object of that class is destroyed, used to clean up resources and perform any necessary cleanup operations.
+
+Code: 
+#include <iostream>
+Using namespace std;
+class MyClass {
+public:
+    // Constructor
+    MyClass() {
+        cout << "Constructor called." << endl;}
+    // Destructor
+    ~MyClass() {
+        cout << "Destructor called." <<endl;  }
+};
+int main() {
+    MyClass obj;  // Constructor called
+    // Rest of the code
+    return 0;  // Destructor called}
+
+LAB 13: Working with i/o stream
+
+Theory: Working with I/O streams in C++ involves using the 
+input and output streams (std::cin and std::cout) to read input from the user 
+and display output to the console, making it easy to interact with the user and display
+ information in a concise and efficient manner.
+
+For viva:
+
+1. Abstraction: OOP concept that focuses on representing complex systems by simplifying 
+and modeling real-world entities through classes and objects.
+
+2. Encapsulation: The bundling of data and methods within a class to restrict direct access 
+and provide controlled interaction through public, private, and protected access specifiers.
+
+3. Inheritance: Mechanism allowing a class to acquire properties and behaviors of another class, 
+fostering code reuse and establishing an "is-a" relationship between classes.
+
+4. Polymorphism: The ability of objects of different classes to be treated as objects of a common superclass, 
+enabling methods to be overridden and dynamically bound at runtime.
+
+5. Class: A blueprint or template that defines the structure and behavior of objects, 
+encapsulating data and methods.
+
+6. Object: An instance of a class that represents a specific entity and holds its own unique data and state, 
+interacting with other objects through method invocations.
+
+7. Constructor: A special member function called during object creation, 
+used to initialize the object's data members and perform any necessary setup.
+
+8. Destructor: A special member function called when an object is destroyed, 
+used to clean up resources and perform necessary cleanup operations.
+
+9. Encapsulation: The bundling of data and methods within a class to create self-contained objects,
+ enhancing code organization, reusability, and security.
+
+10. Polymorphism: The ability of objects to exhibit different behaviors 
+based on their specific types or the context in which they are used, 
+achieved through function overloading and virtual functions.
+
+
+
+
